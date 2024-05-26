@@ -1,4 +1,4 @@
-def binary_search(Arr, key):
+def binary_search_itr(Arr, key):
     l = 0
     r = len(Arr) - 1
     while l <= r:
@@ -12,5 +12,19 @@ def binary_search(Arr, key):
     return -1
 
 
+def binary_search_rec(Arr, key, l, r):
+    if l > r:
+        return -1
+    else:
+        mid = (l + r) // 2
+        if Arr[mid] == key:
+            return mid
+        elif Arr[mid] > key:
+            return binary_search_rec(Arr, key, l, mid-1)
+        elif Arr[mid] < key:
+            return binary_search_rec(Arr, key, mid+1, r)
+
+
 Arr = [84, 21, 47, 96, 15]
-print(binary_search(Arr, 47))
+print(binary_search_itr(Arr, 47))
+print(binary_search_rec(Arr, 47))
